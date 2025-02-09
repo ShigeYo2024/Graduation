@@ -5,4 +5,4 @@ jsonschema==4.19.0
 textblob==0.17.1
 matplotlib==3.8.0
 llama-index==0.8.27
-pandas==2.1.0
+pandas==2.0.3
