@@ -55,12 +55,16 @@ def generate_questions(persona):
     """
     
     try:
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             model="gpt-4",
-            prompt=prompt,
+            messages=[
+                {"role": "system", "content": "あなたはプロフェッショナルなDX推進コンサルタントです。"},
+                {"role": "user", "content": prompt}
+            ],
             max_tokens=150
         )
-        questions = response["choices"][0]["text"].strip().split("\n")
+        questions = response["choices"][0]["message"]["content"].strip().split("\n")
+
         return questions
     except Exception as e:
         st.error(f"質問の生成中にエラーが発生しました: {e}")
