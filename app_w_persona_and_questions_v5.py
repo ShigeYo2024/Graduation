@@ -56,7 +56,7 @@ if "feedbacks" not in st.session_state:
 def generate_questions(persona):
     prompt = f"""
     あなたは{persona['job']}の{persona['name']}です。
-    以下の目標と課題に基づいて、AIチャットボットに投げかけるべき質問を1個考えてください。また、チャットボットの回答が不明な場合は深掘り質問も追加してください。
+    以下の目標と課題に基づいて、AIチャットボットに投げかけるべき質問を1個考えてください。
     
     目標: {persona['goals']}
     話題: {persona['challenges']}
