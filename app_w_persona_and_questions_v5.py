@@ -41,12 +41,12 @@ persona = personas[persona_id]
 st.title(f"DX推進コーチ: {persona['name']}さんのインタビュー")
 st.write(f"**職業:** {persona['job']}")
 st.write(f"**目標:** {persona['goals']}")
-st.write(f"**話題:** {persona['challenges']}")
+st.write(f"**課題:** {persona['challenges']}")
 
 # セッションステートの初期化
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "system", "content": f"あなたはDX推進コーチです。{persona['job']}の{persona['name']}さんの話題解決をサポートしてください。"}
+        {"role": "system", "content": f"あなたはDX推進コーチです。{persona['job']}の{persona['name']}さんの課題解決をサポートしてください。"}
     ]
 
 if "feedbacks" not in st.session_state:
@@ -56,7 +56,7 @@ if "feedbacks" not in st.session_state:
 def generate_questions(persona):
     prompt = f"""
     あなたは{persona['job']}の{persona['name']}です。
-    以下の目標と話題に基づいて、AIチャットボットに投げかけるべき質問を10個考えてください。
+    以下の目標と課題に基づいて、AIチャットボットに投げかけるべき質問を5個考えてください。
     
     目標: {persona['goals']}
     話題: {persona['challenges']}
