@@ -184,7 +184,7 @@ def download_file(file_name, label):
         st.download_button(label, data=data, file_name=file_name, mime='text/plain')
 
 # チャット履歴のダウンロード
-download_file(f"chat_history_persona_{persona['id']}.txt", "チャット履歴をダウンロード")
+download_file(f"chat_history_persona_{persona['id']}.xls", "チャット履歴をダウンロード")
 
 # フィードバック履歴のダウンロード
-download_file(f"feedback_history_persona_{persona['id']}.txt", "フィードバック履歴をダウンロード")
+download_file(f"feedback_history_persona_{persona['id']}.xls", "フィードバック履歴をダウンロード")
