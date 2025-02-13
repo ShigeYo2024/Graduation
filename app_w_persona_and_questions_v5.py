@@ -56,7 +56,7 @@ if "feedbacks" not in st.session_state:
 def generate_questions(persona):
     prompt = f"""
     あなたは{persona['job']}の{persona['name']}です。
-    以下の目標と課題に基づいて、AIチャットボットに投げかけるべき質問を5個考えてください。
+    以下の目標と課題に基づいて、AIチャットボットに投げかけるべき質問を1個考えてください。
     
     目標: {persona['goals']}
     話題: {persona['challenges']}
@@ -72,7 +72,7 @@ def generate_questions(persona):
         response = openai.ChatCompletion.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "あなたはプロフェッショナルなDX推進コンサルタントです。"},
+                {"role": "system", "content": "あなたはDX推進リーダーとしてチャットボットを活用し、評価する立場です。"},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=1000
