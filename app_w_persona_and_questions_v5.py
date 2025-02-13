@@ -61,7 +61,7 @@ def generate_questions(persona):
     以下の目標と課題に基づいて、AIチャットボットに投げかけるべき質問を1個考えてください。
     
     目標: {persona['goals']}
-    話題: {persona['challenges']}
+    課題: {persona['challenges']}
 
 
     参考情報として、DX推進の課題チェックリストも考慮してください:
