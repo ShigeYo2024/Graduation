@@ -160,31 +160,44 @@ if st.session_state["feedbacks"]:
 
 # チャット履歴をExcelに保存
 def save_chat_history_to_excel(persona_id, messages):
-    df = pd.DataFrame(messages)
-    filename = f"chat_history_persona_{persona_id}.xlsx"
-    df.to_excel(filename, index=False, encoding="utf-8", engine="openpyxl")
-    return filename
+    if messages:
+        df = pd.DataFrame(messages)
+        filename = f"chat_history_persona_{persona_id}.xlsx"
+        df.to_excel(filename, index=False, encoding="utf-8", engine="openpyxl")
+        return filename
+    return None
 
 # フィードバック履歴をExcelに保存
 def save_feedback_history_to_excel(persona_id, feedbacks):
-    df = pd.DataFrame(feedbacks, columns=["フィードバック"])
-    filename = f"feedback_history_persona_{persona_id}.xlsx"
-    df.to_excel(filename, index=False, encoding="utf-8", engine="openpyxl")
-    return filename
+    if feedbacks:
+        df = pd.DataFrame(feedbacks, columns=["フィードバック"])
+        filename = f"feedback_history_persona_{persona_id}.xlsx"
+        df.to_excel(filename, index=False, encoding="utf-8", engine="openpyxl")
+        return filename
+    return None
 
 # Excelファイルのダウンロード
 def download_excel_file(file_path, label):
-    with open(file_path, "rb") as file:
-        st.download_button(label, data=file, file_name=file_path, mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as file:
+            st.download_button(label, data=file, file_name=file_path, mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    else:
+        st.warning(f"{file_path} が存在しません。先にExcelファイルを保存してください。")
 
 # Excel保存ボタン
 if st.button("チャット履歴をExcelで保存"):
-    chat_file = save_chat_history_to_excel(persona["id"], st.session_state["messages"])
-    st.success(f"{persona['name']}さんのチャット履歴をExcelに保存しました。")
+    chat_file = save_chat_history_to_excel(persona["id"], st.session_state.get("messages", []))
+    if chat_file:
+        st.success(f"{persona['name']}さんのチャット履歴をExcelに保存しました。")
+    else:
+        st.warning("チャット履歴がありません。")
 
 if st.button("フィードバック履歴をExcelで保存"):
-    feedback_file = save_feedback_history_to_excel(persona["id"], st.session_state["feedbacks"])
-    st.success(f"{persona['name']}さんのフィードバック履歴をExcelに保存しました。")
+    feedback_file = save_feedback_history_to_excel(persona["id"], st.session_state.get("feedbacks", []))
+    if feedback_file:
+        st.success(f"{persona['name']}さんのフィードバック履歴をExcelに保存しました。")
+    else:
+        st.warning("フィードバック履歴がありません。")
 
 # ダウンロードボタン
 download_excel_file(f"chat_history_persona_{persona['id']}.xlsx", "チャット履歴をダウンロード")
