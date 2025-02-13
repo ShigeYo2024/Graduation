@@ -70,7 +70,7 @@ def generate_questions(persona):
     
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "あなたはプロフェッショナルなDX推進コンサルタントです。"},
                 {"role": "user", "content": prompt}
@@ -104,7 +104,7 @@ def generate_feedback(persona, chat_history):
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "あなたはプロフェッショナルなDX推進コンサルタントです。"},
                 {"role": "user", "content": prompt}
@@ -128,7 +128,7 @@ if st.button(f"{persona['name']}さんの自動生成質問を開始"):
         
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4",
+                model="gpt-4o-mini",
                 messages=st.session_state["messages"]
             )
             bot_message = response["choices"][0]["message"]
