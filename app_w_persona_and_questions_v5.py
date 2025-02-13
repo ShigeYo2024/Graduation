@@ -77,7 +77,7 @@ def generate_questions(persona):
                 {"role": "system", "content": "あなたはDX推進リーダーとしてチャットボットを活用し、評価する立場です。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=300
+            max_tokens=200
         )
         questions = response["choices"][0]["message"]["content"].strip().split("\n")
         return questions
