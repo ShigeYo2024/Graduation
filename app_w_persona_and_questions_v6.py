@@ -5,8 +5,6 @@ import os
 import pandas as pd
 import io
 
-
-
 # StreamlitのSecretsからOpenAI API keyを取得
 openai.api_key = st.secrets["OpenAIAPI"]["openai_api_key"]
 
@@ -110,7 +108,7 @@ def generate_feedback(persona, chat_history):
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "あなたはプロフェッショナルなDX推進コンサルタントです。"},
+                {"role": "system", "content": "あなたはDX推進リーダーとしてチャットボットを利用し評価する立場の人です。"},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=800,
