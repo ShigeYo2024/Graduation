@@ -75,7 +75,7 @@ def generate_questions(persona):
                 {"role": "system", "content": "あなたはプロフェッショナルなDX推進コンサルタントです。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=1000
+            max_tokens=800
         )
         questions = response["choices"][0]["message"]["content"].strip().split("\n")
         return questions
@@ -184,7 +184,7 @@ def download_file(file_name, label):
         st.download_button(label, data=data, file_name=file_name, mime='text/plain')
 
 # チャット履歴のダウンロード
-download_file(f"chat_history_persona_{persona['id']}.xls", "チャット履歴をダウンロード")
+download_file(f"chat_history_persona_{persona['id']}.xlsx", "チャット履歴をダウンロード")
 
 # フィードバック履歴のダウンロード
-download_file(f"feedback_history_persona_{persona['id']}.xls", "フィードバック履歴をダウンロード")
+download_file(f"feedback_history_persona_{persona['id']}.xlsx", "フィードバック履歴をダウンロード")
