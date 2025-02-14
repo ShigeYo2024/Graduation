@@ -58,14 +58,14 @@ def generate_questions(persona):
     prompt = f"""
     あなたは{persona['job']}の{persona['name']}です。
     
-    以下の目標と課題とDX推進ステージに基づいて、AIチャットボットに投げかけるDX推進の上で生じる質問を考えてください。
-    質問に対する回答がわからない場合は、追加の質問を行い、回答を得るようにしてください。
+    以下の目標と課題とDX推進ステージに基づいて、AIチャットボットに投げかけるDXを推進する上で直面する質問をしてください。
+    質問に対する回答がわからない場合は、追加の質問を行い、理解を深めてください。
     
     目標: {persona['goals']}
     課題: {persona['challenges']}
     DX推進ステージ：{persona['DX Stages']}
 
-    以下のDX推進の課題チェックリストの課題を、DX推進ステージに基づき、必要に応じて参照してください。
+    以下のDX推進の課題チェックリストの課題を、DX推進ステージに基づき、適宜参照してください。
     【DX推進の課題チェックリスト】
     {json.dumps(persona_questions, ensure_ascii=False, indent=2)}
  
