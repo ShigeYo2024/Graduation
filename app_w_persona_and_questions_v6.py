@@ -63,7 +63,7 @@ def generate_questions(persona):
     
     目標: {persona['goals']}
     課題: {persona['challenges']}
-    DX推進ステージ：{persona['DX stages']}
+    DX推進ステージ：{persona['DX Stages']}
 
     【重要】以下のDX推進の課題チェックリストの問いを入れてください。その場合は、ベストプラクティスの回答を回答してください。
     【DX推進の課題チェックリスト】
