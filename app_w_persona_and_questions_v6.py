@@ -58,7 +58,7 @@ def generate_questions(persona):
     prompt = f"""
     あなたは{persona['job']}の{persona['name']}です。
     
-    以下の目標と課題とDX推進ステージに基づいて、DX推進がうまくいかない事象を踏まえ、その課題を解決するための質問をしてください。
+    以下の目標と課題とDX推進ステージに基づいて、DX推進が失敗うまくいかない事象を踏まえ、その課題を解決するための質問をしてください。
     
     目標: {persona['goals']}
     課題: {persona['challenges']}
