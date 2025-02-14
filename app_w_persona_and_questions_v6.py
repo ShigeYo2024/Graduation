@@ -78,7 +78,7 @@ def generate_questions(persona):
                 {"role": "system", "content": "あなたはプロフェッショナルなDX推進コンサルタントです。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=300
+            max_tokens=600
         )
         questions_and_responses = response["choices"][0]["message"]["content"].strip().split("\n")
         return questions_and_responses
@@ -112,7 +112,7 @@ def generate_feedback(persona, chat_history):
                 {"role": "system", "content": "あなたはDX推進リーダーとしてチャットボットを利用し評価する立場の人です。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=300,
+            max_tokens=600,
             temperature=0.7
         )
         feedback = response["choices"][0]["message"]["content"].strip()
