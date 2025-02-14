@@ -65,7 +65,7 @@ def generate_questions(persona):
     課題: {persona['challenges']}
     DX推進ステージ：{persona['DX Stages']}
 
-    【重要】以下のDX推進の課題チェックリストの問いを入れてください。その場合は、ベストプラクティスの回答を回答してください。
+    【重要】以下のDX推進の課題チェックリストの課題を、DX推進ステージに基づき、入れるようにしてください。
     【DX推進の課題チェックリスト】
     {json.dumps(persona_questions, ensure_ascii=False, indent=2)}
  
