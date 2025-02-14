@@ -74,7 +74,7 @@ def generate_questions(persona):
         response = openai.ChatCompletion.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "あなたはプロフェッショナルなDX推進コンサルタントです。"},
+                {"role": "system", "content": "あなたは自分の所属部署のDX推進リーダーです。"},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=600
