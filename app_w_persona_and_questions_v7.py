@@ -186,7 +186,7 @@ def generate_feedback(persona, chat_history):
     """
 # ペルソナからのフィードバック生成
 def generate_feedback(persona, chat_history):
-　　# セッションに保存された DX ステージを取得（なければ現在のものを使用）
+　　#セッションに保存された DX ステージを取得（なければ現在のものを使用）
     dx_stage = st.session_state.get("dx_stage", persona["DX Stages"])
     
     chat_content = "\n".join([msg["content"] for msg in chat_history if msg["role"] in ["user", "assistant"]])
