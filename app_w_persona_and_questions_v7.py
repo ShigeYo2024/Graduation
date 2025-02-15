@@ -123,6 +123,7 @@ def chat_with_ai(persona, question):
     具体的かつ簡潔に、実践的なアドバイスを提供してください。
 
     【出力フォーマット】
+
     1. （ここに200字以内のアドバイス）
     2. （ここに200字以内のアドバイス）
     3. （ここに200字以内のアドバイス）
@@ -151,22 +152,25 @@ if st.button(f"{persona['name']}の質問を開始", key="start_questions"):
 
     for category, questions in auto_questions.items():
         st.subheader(f"📌 {category} の質問 ({persona['DX Stages']})")
+
         for question in questions:  
-            # 質問をユーザーの発言として保存
+            # 質問が既に保存されていないかチェック
             if not any(msg["content"] == question for msg in st.session_state["messages"]):
                 user_message = {"role": "user", "content": question}
                 st.session_state["messages"].append(user_message)
-            
+
             # AIの回答を生成
             ai_response = chat_with_ai(persona, question)
 
-            # AIの回答を保存
-            ai_message = {"role": "assistant", "content": ai_response}
-            st.session_state["messages"].append(ai_message)
+            # AIの回答が既に保存されていないかチェック
+            if not any(msg["content"] == ai_response for msg in st.session_state["messages"]):
+                ai_message = {"role": "assistant", "content": ai_response}
+                st.session_state["messages"].append(ai_message)
 
             # **質問と回答の表示**
-            st.write(f"🙂 **質問:** {question}")
-            st.write(f"🤖 **AIの回答:** {ai_response}")
+            st.markdown(f"🙂 **質問:**\n\n{question}")  # 質問の後に改行を追加
+            st.markdown(f"🤖 **AIの回答:**\n\n{ai_response}")  # AIの回答の後に改行を追加
+
 
 # ペルソナからのフィードバック生成
 def generate_feedback(persona, chat_history):
@@ -209,11 +213,10 @@ def generate_feedback(persona, chat_history):
         st.error(f"OpenAI APIでエラーが発生しました: {e}")
         return "フィードバックの生成に失敗しました。"
 
-# フィードバック生成ボタン
+# **フィードバックボタンを最後に配置**
 if st.button(f"{persona['name']}さんからフィードバックを取得"):
     feedback = generate_feedback(persona, st.session_state["messages"])
-    st.write(f"📜 {persona['name']}さんのフィードバック:")
-    st.write(feedback)
+    st.markdown(f"📜 **{persona['name']}さんのフィードバック:**\n\n{feedback}")
 
 # チャット履歴の表示
 if st.session_state["messages"]:
