@@ -118,8 +118,8 @@ def chat_with_ai(persona, question):
     質問:
     {question}
 
-    これに対して、DX推進に関する知識を活用し、具体的で実践的なアドバイスを行ってください。
-    3つの重要なポイントに絞り、アドバイスは600字以内で完成した文章で提供する
+    DX推進の知識を活かし、3つの重要ポイントに絞って具体的なアドバイスを600字以内で提示してください。
+    
     """
 
     try:
@@ -129,7 +129,7 @@ def chat_with_ai(persona, question):
                 {"role": "system", "content": "あなたはDX推進のプロフェッショナルコーチです。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=600
+            max_tokens=800
         )
         return response["choices"][0]["message"]["content"].strip()
     except Exception as e:
