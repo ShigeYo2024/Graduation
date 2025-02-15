@@ -118,8 +118,15 @@ def chat_with_ai(persona, question):
     質問:
     {question}
 
-    DX推進の知識を活かし、3つの重要ポイントに絞って具体的なアドバイスを600字以内で提示してください。
-    
+    DX推進の知識を活かし、回答では、3つの重要なポイントを挙げてください。
+    **各ポイントは200字以内** で書き、**合計600字以内** に収めてください。
+    具体的かつ簡潔に、実践的なアドバイスを提供してください。
+
+    【出力フォーマット】
+    1. （ここに200字以内のアドバイス）
+    2. （ここに200字以内のアドバイス）
+    3. （ここに200字以内のアドバイス）
+
     """
 
     try:
@@ -130,7 +137,7 @@ def chat_with_ai(persona, question):
                 {"role": "user", "content": prompt}
             ],
             max_tokens=1000,
-            temperature=0.5,  # 創造性を少し抑える
+            temperature=0.6,  # 創造性を少し抑える
             top_p=0.9  # 確率的に高い回答を優先
         )
         return response["choices"][0]["message"]["content"].strip()
@@ -146,9 +153,10 @@ if st.button(f"{persona['name']}の質問を開始", key="start_questions"):
         st.subheader(f"📌 {category} の質問 ({persona['DX Stages']})")
         for question in questions:  
             # 質問をユーザーの発言として保存
-            user_message = {"role": "user", "content": question}
-            st.session_state["messages"].append(user_message)
-
+            if not any(msg["content"] == question for msg in st.session_state["messages"]):
+                user_message = {"role": "user", "content": question}
+                st.session_state["messages"].append(user_message)
+            
             # AIの回答を生成
             ai_response = chat_with_ai(persona, question)
 
