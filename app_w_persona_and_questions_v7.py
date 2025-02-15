@@ -39,7 +39,7 @@ def load_persona_questions(file_path):
 
 # ペルソナとインタビュー質問ファイルとDX課題チェックリスト（persona_questions）を読み込む
 personas = load_personas("persona.json")
-interview_questions = load_questions("interview_questions2.json")
+interview_questions = load_questions("interview_questions_v2.json")
 persona_questions = load_persona_questions("persona_questions.json")
 
 # ペルソナの選択
