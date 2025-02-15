@@ -129,7 +129,9 @@ def chat_with_ai(persona, question):
                 {"role": "system", "content": "あなたはDX推進のプロフェッショナルコーチです。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=800
+            max_tokens=800,
+            temperature=0.5,  # 創造性を少し抑える
+            top_p=0.9  # 確率的に高い回答を優先
         )
         return response["choices"][0]["message"]["content"].strip()
     except Exception as e:
