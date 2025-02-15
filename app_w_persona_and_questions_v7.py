@@ -183,12 +183,16 @@ def generate_feedback(persona, chat_history):
     """
 # ペルソナからのフィードバック生成
 def generate_feedback(persona, chat_history):
+　　# セッションに保存された DX ステージを取得（なければ現在のものを使用）
+    dx_stage = st.session_state.get("dx_stage", persona["DX Stages"])
+    
     chat_content = "\n".join([msg["content"] for msg in chat_history if msg["role"] in ["user", "assistant"]])
     
     questions_formatted = "\n".join([f"{i+1}. {q}" for i, q in enumerate(interview_questions)])
     
     prompt = f"""
     あなたは{persona['job']}の{persona['name']}です。
+    あなたのDX推進ステージは「{dx_stage}」です。
     以下はあなたがAIチャットボットとやり取りした内容です。この経験を基に、インタビューの質問に答えてください。
 
     チャット履歴:
