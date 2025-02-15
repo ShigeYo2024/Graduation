@@ -100,7 +100,7 @@ def generate_questions(persona):
                     {"role": "system", "content": "あなたはDX推進のリーダーです。"},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=600
+                max_tokens=800
             )
             questions_by_category[category] = response["choices"][0]["message"]["content"].strip().split("\n")
         except Exception as e:
@@ -118,8 +118,8 @@ def chat_with_ai(persona, question):
     質問:
     {question}
 
-    これに対して、DX推進に関する知識を活用し、600字以内の具体的で実践的なアドバイスを行ってください。
-    重要なポイントを3つにまとめてください。
+    これに対して、DX推進に関する知識を活用し、具体的で実践的なアドバイスを行ってください。
+    3つの重要なポイントに絞り、アドバイスは600字以内で完成した文章で提供する
     """
 
     try:
