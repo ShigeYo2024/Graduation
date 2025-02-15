@@ -40,7 +40,7 @@ persona_id = int(selected_persona.split(".")[0]) - 1
 persona = personas[persona_id]
 
 # ペルソナ情報の表示
-st.title(f"DX推進コーチ: {persona['name']}さんのインタビュー")
+st.title(f"DX推進リーダー: {persona['name']}さんのインタビュー")
 st.write(f"**職業:** {persona['job']}")
 st.write(f"**目標:** {persona['goals']}")
 st.write(f"**課題:** {persona['challenges']}")
