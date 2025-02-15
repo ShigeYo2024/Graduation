@@ -109,6 +109,9 @@ def generate_questions(persona):
 
     return questions_by_category
 
+# ユーザーが回答のボリュームを調整できるスライダー
+response_length = st.slider("回答の長さを調整", min_value=100, max_value=700, value=500, step=50)
+
 # **質問に対するAIの回答生成**
 def chat_with_ai(persona, question):
     prompt = f"""
@@ -119,6 +122,7 @@ def chat_with_ai(persona, question):
     {question}
 
     これに対して、DX推進に関する知識を活用し、具体的で実践的なアドバイスを行ってください。
+    重要なポイントを3つにまとめてください。
     """
 
     try:
