@@ -57,6 +57,9 @@ st.write(f"**目標:** {persona['goals']}")
 st.write(f"**課題:** {persona['challenges']}")
 st.write(f"**DX推進ステージ:** {persona['DX Stages']}")
 
+# 質問時のDX推進ステージをセッションに保存（質問が生成されるタイミングで保存）
+    st.session_state["dx_stage"] = persona["DX Stages"]
+
 # **質問カテゴリ（DXステージを考慮）**
 question_categories = {
     "組織課題": f"{persona['DX Stages']}における組織の壁やマネジメントの課題について質問を考えてください。",
