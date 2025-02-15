@@ -205,7 +205,7 @@ def generate_feedback(persona, chat_history):
                 {"role": "system", "content": "あなたはDX推進リーダーとしてチャットボットを利用し評価する立場の人です。"},
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=800,
+            max_tokens=1200,
             temperature=0.6  # 具体性を持たせるために少し低めに調整
         )
         feedback = response["choices"][0]["message"]["content"].strip()
