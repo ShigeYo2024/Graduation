@@ -174,16 +174,7 @@ if st.button(f"{persona['name']}の質問を開始", key="start_questions"):
             st.markdown(f"🙂 **質問:**\n\n{question}")  # 質問の後に改行を追加
             st.markdown(f"🤖 **AIの回答:**\n\n{ai_response}")  # AIの回答の後に改行を追加
 
-# **フィードバックボタンを最後に配置**
-if st.button(f"{persona['name']}さんからフィードバックを取得"):
-    feedback = generate_feedback(persona, st.session_state["messages"])
-    st.markdown(f"📜 **{persona['name']}さんのフィードバック:**\n\n{feedback}")
-    
-# ペルソナからのフィードバック生成
-def generate_feedback(persona, chat_history):
-    """
-    チャットボットの体験に基づき、ペルソナからの具体的なフィードバックを生成
-    """
+
 # ペルソナからのフィードバック生成
 def generate_feedback(persona, chat_history):
     #　セッションに保存された DX ステージを取得（なければ現在のものを使用）
@@ -223,6 +214,11 @@ def generate_feedback(persona, chat_history):
     except openai.error.OpenAIError as e:
         st.error(f"OpenAI APIでエラーが発生しました: {e}")
         return "フィードバックの生成に失敗しました。"
+
+# **フィードバックボタンを最後に配置**
+if st.button(f"{persona['name']}さんからフィードバックを取得"):
+    feedback = generate_feedback(persona, st.session_state["messages"])
+    st.markdown(f"📜 **{persona['name']}さんのフィードバック:**\n\n{feedback}")
 
 # チャット履歴の表示
 if st.session_state["messages"]:
