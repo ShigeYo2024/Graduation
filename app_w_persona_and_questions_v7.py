@@ -4,6 +4,7 @@ import json
 import os
 import pandas as pd
 import io
+import random  # ← これを追加
 
 # StreamlitのSecretsからOpenAI API keyを取得
 openai.api_key = st.secrets["OpenAIAPI"]["openai_api_key"]
