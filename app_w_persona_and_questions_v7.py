@@ -158,24 +158,41 @@ if st.button(f"{persona['name']}の質問を開始", key="start_questions"):
             st.write(f"🙂 **質問:** {question}")
             st.write(f"🤖 **AIの回答:** {ai_response}")
 
-
 # ペルソナからのフィードバック生成
 def generate_feedback(persona, chat_history):
+    """
+    チャットボットの体験に基づき、ペルソナからの具体的なフィードバックを生成
+    """
+
+    # チャット履歴を整形
     chat_content = "\n".join([msg["content"] for msg in chat_history if msg["role"] in ["user", "assistant"]])
-    
+
+    # インタビューの質問リストを整形
     questions_formatted = "\n".join([f"{i+1}. {q}" for i, q in enumerate(interview_questions)])
-    
+
     prompt = f"""
     あなたは{persona['job']}の{persona['name']}です。
-    以下はあなたがAIチャットボットとやり取りした内容です。この経験を基に、インタビューの質問に答えてください。
+    以下はあなたがAIチャットボットとやり取りした内容です。この経験を基に、以下の3つの観点でフィードバックを行ってください。
 
-    チャット履歴:
+    1. **特に役立ったチャットのやり取り**  
+       - どの質問に対するAIの回答が特に役立ちましたか？  
+       - それはなぜ役立ったのか、具体的な理由を述べてください。
+
+    2. **期待と異なっていた点**  
+       - どの質問に対する回答が期待と違いましたか？  
+       - どの部分が足りなかったか、どのような情報が不足していたかを説明してください。
+
+    3. **今後の改善点と具体的な提案**  
+       - チャットボットがより有益な回答をするために、どのような改善が必要ですか？  
+       - 具体的にどのような情報を追加すると良いと思いますか？
+
+    **チャット履歴:**
     {chat_content}
 
-    質問:
+    **インタビューの質問リスト:**
     {questions_formatted}
 
-    回答:
+    **フィードバック:**
     """
 
     try:
@@ -186,7 +203,7 @@ def generate_feedback(persona, chat_history):
                 {"role": "user", "content": prompt}
             ],
             max_tokens=800,
-            temperature=0.7
+            temperature=0.6  # 具体性を持たせるために少し低めに調整
         )
         feedback = response["choices"][0]["message"]["content"].strip()
         st.session_state["feedbacks"].append(feedback)
@@ -194,7 +211,6 @@ def generate_feedback(persona, chat_history):
     except openai.error.OpenAIError as e:
         st.error(f"OpenAI APIでエラーが発生しました: {e}")
         return "フィードバックの生成に失敗しました。"
-
 
 # フィードバック生成ボタン
 if st.button(f"{persona['name']}さんからフィードバックを取得"):
