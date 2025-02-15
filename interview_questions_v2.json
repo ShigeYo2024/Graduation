@@ -1,5 +1,5 @@
 {
-  "feedback_questions": [
+  "questions": [
     {
       "question": "このチャットボット使用前のご自身のDX推進リーダーとしての理解度を10段階評価で評価してください。（理解度：10が高く、1が低い）",
       "type": "scale",
