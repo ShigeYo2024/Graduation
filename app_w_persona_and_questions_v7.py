@@ -58,8 +58,8 @@ question_categories = {
     "技術課題": f"{persona['DX Stages']}におけるデジタル技術導入に関する質問を考えてください。",
     "導入後の評価": f"{persona['DX Stages']}におけるDX導入後の成果測定、PDCAの最適化に関する質問を考えてください。",
     "KPI設定": f"{persona['DX Stages']}におけるDXプロジェクトのKPI設定、データ分析の活用に関する質問を考えてください。",
-    "現場対応": f"{persona['DX Stages']}における現場従業員の教育、業務変革に関する質問を考えてください。",
-
+    "現場対応": f"{persona['DX Stages']}における現場従業員の教育、業務変革に関する質問を考えてください。"
+}
 # セッションステートの初期化
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
