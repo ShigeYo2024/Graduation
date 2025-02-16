@@ -141,7 +141,7 @@ def chat_with_ai(persona, question):
     質問:
     {question}
 
-    以下のDX推進の重要ポイントを参考にする
+    以下のDX推進の重要ポイントを＊＊＊＊必ず**参考にする
      {relevant_text}
     
     
