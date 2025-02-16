@@ -1,0 +1,14 @@
+{
+  "personas": [
+    {"id": 1, "name": "田中 太郎", "age": 50, "job": "組織運営担当", "goals": "部門全体の能力向上", "challenges": "リスキリング", "DX Stages": "導入前"},
+    {"id": 2, "name": "鈴木 花子", "age": 40, "job": "デジタルマーケティング担当", "goals": "面談リーズの件数拡大", "challenges": "ROIの維持", "DX Stages": "定着期"},
+    {"id": 3, "name": "佐藤 一郎", "age": 45, "job": "ブランド施策推進", "goals": "社内でのブランド施策認知向上", "challenges": "対面コミュニケーションに時間がかかる", "DX Stages": "導入初期"},
+    {"id": 4, "name": "高橋 美咲", "age": 33, "job": "お客さま向けデジタル化推進", "goals": "デジタルサービス登録数拡大", "challenges": "メールアドレス数取得", "DX Stages": "導入推進中"},
+    {"id": 5, "name": "中村 亮", "age": 38, "job": "UI/UXデザインチーム運営", "goals": "WebサイトのUI/UX改善", "challenges": "リーダー人材の育成", "DX Stages": "導入推進中"},
+    {"id": 6, "name": "山本 健", "age": 50, "job": "お客さま資材作成", "goals": "お客さま向け資材作成効率化", "challenges": "AIツールによる効率化促進", "DX Stages": "導入前"},
+    {"id": 7, "name": "小林 直美", "age": 28, "job": "経費支払い担当", "goals": "確実な経費支払い事務遂行", "challenges": "業務効率改善", "DX Stages": "導入前"},
+    {"id": 8, "name": "松本 涼", "age": 40, "job": "商品プロモーション担当", "goals": "営業人員の活性化", "challenges": "キャンペーン施策に真新しさがない", "DX Stages": "導入前"},
+    {"id": 9, "name": "石田 翔", "age": 35, "job": "セミナーのバナー広告作成", "goals": "セミナーのクリック率向上", "challenges": "あまたの広告に埋もれてしまう", "DX Stages": "導入初期"},
+    {"id": 10, "name": "高井 未来", "age": 27, "job": "スポンサーシップ施策の推進", "goals": "SNSによる認知拡大", "challenges": "認知度の低いスポーツの認知向上", "DX Stages": "導入初期"}
+  ]
+}
